@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Blitz Files">
+      <UniqueIdentifier>{53eae672-7e3f-4de4-af1f-79e46e407a39}</UniqueIdentifier>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BlitzPointer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BlitzNative.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BlitzHybrid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryHelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dllmain.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BlitzPointer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Blitz\Example05.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Blitz\BlitzPointer.decls">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Blitz\BlitzPointer.ipf">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Blitz\Example_Shared.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Blitz\Example01.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Blitz\Example02.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Blitz\Example03.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Blitz\Example04.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Blitz\Example06.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Blitz\Example07.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
