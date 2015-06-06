@@ -140,6 +140,14 @@
     <ClInclude Include="dllmain.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="LICENSE">
+      <Link>LICENSE</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="LICENSE.lesser">
+      <Link>LICENSE.lesser</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Blitz\BlitzPointer.decls">
       <Link>BlitzPointer.decls</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
