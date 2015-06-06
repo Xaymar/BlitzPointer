@@ -1,3 +1,4 @@
+#pragma once
 #include "dllmain.h"
 #include <string>
 
