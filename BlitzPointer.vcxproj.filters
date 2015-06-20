@@ -9,10 +9,6 @@
       <UniqueIdentifier>{53eae672-7e3f-4de4-af1f-79e46e407a39}</UniqueIdentifier>
       <ParseFiles>false</ParseFiles>
     </Filter>
-    <Filter Include="Include Files">
-      <UniqueIdentifier>{2651cf83-130d-4638-b631-b6321e4865d3}</UniqueIdentifier>
-      <ParseFiles>false</ParseFiles>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -31,9 +27,6 @@
     </ClInclude>
     <ClInclude Include="BlitzPointer.h">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\BlitzPointer.h">
-      <Filter>Include Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -26,6 +26,6 @@
 #ifndef IMPORT
 #define DLL_METHOD extern "C" //__declspec(dllexport)
 #else
-#define DLL_METHOD extern "c" __declspec(dllimport)
+#define DLL_METHOD extern "C" __declspec(dllimport)
 #endif
 #define DLL_CALL __stdcall

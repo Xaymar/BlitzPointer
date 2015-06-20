@@ -133,18 +133,14 @@
   <ItemGroup>
     <ClInclude Include="BlitzPointer.h" />
     <ClInclude Include="dllmain.h" />
-    <ClInclude Include="Include\BlitzPointer.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="LICENSE">
-      <Link>LICENSE</Link>
+      <Link>BlitzPointer.LICENSE</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="LICENSE.lesser">
-      <Link>LICENSE.lesser</Link>
+      <Link>BlitzPointer.LICENSE.lesser</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Blitz\BlitzPointer.decls">
