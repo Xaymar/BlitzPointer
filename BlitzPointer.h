@@ -24,6 +24,7 @@ typedef int32_t(__stdcall *BP_BlitzFunction1_t)(int32_t);
 typedef int32_t(__stdcall *BP_BlitzFunction2_t)(int32_t, int32_t);
 typedef int32_t(__stdcall *BP_BlitzFunction3_t)(int32_t, int32_t, int32_t);
 typedef int32_t(__stdcall *BP_BlitzFunction4_t)(int32_t, int32_t, int32_t, int32_t);
+typedef int32_t(__stdcall *BP_BlitzFunction5_t)(int32_t, int32_t, int32_t, int32_t, int32_t);
 
 // Basic Functionality (Pointer retrieval)
 DLL_METHOD intptr_t DLL_CALL BP_GetReturnAddress();
@@ -36,3 +37,4 @@ DLL_METHOD int32_t DLL_CALL BP_CallFunction1(BP_BlitzFunction1_t lpFunctionPoint
 DLL_METHOD int32_t DLL_CALL BP_CallFunction2(BP_BlitzFunction2_t lpFunctionPointer, int32_t p1, int32_t p2);
 DLL_METHOD int32_t DLL_CALL BP_CallFunction3(BP_BlitzFunction3_t lpFunctionPointer, int32_t p1, int32_t p2, int32_t p3);
 DLL_METHOD int32_t DLL_CALL BP_CallFunction4(BP_BlitzFunction4_t lpFunctionPointer, int32_t p1, int32_t p2, int32_t p3, int32_t p4);
+DLL_METHOD int32_t DLL_CALL BP_CallFunction5(BP_BlitzFunction5_t lpFunctionPointer, int32_t p1, int32_t p2, int32_t p3, int32_t p4, int32_t p5);
