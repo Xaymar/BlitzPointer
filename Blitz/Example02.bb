@@ -29,7 +29,7 @@ ExampleInit()
 Global fpOurFunction = 0
 Function OurFunction()
 	If fpOurFunction = 0 Then
-		fpOurFunction = BlitzPointer_GetFunctionPointer()
+		fpOurFunction = BP_GetFunctionPointer()
 		Return
 	EndIf
 	
@@ -44,7 +44,7 @@ While Not KeyHit(1)
 ;   BlitzPointer offers many ways of calling our function pointer. Each one
 ;    describes different return types, parameter count and parameter types. 
 ;   Let's use the one that doesn't return a value for now.
-	BlitzPointer_CallFunctionV fpOurFunction
+	BP_CallFunctionV fpOurFunction
 ;   Now if we run the program, instead of a fixed native call, we're calling a
 ;    function pointer instead. Pretty useful in my opinion, especially for UI,
 ;    networking, fake classes, etc.

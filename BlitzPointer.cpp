@@ -19,7 +19,7 @@
 
 #include "BlitzPointer.h"
 
-DLL_EXPORT intptr_t BlitzPointer_GetReturnAddress() {
+DLL_METHOD intptr_t DLL_CALL BP_GetReturnAddress() {
 	intptr_t StackPointer, ReturnAddress;
 
 	__asm { //ASM. Do touch if suicidal.
@@ -32,9 +32,9 @@ DLL_EXPORT intptr_t BlitzPointer_GetReturnAddress() {
 
 	return ReturnAddress;
 }
-#pragma comment(linker, "/EXPORT:BlitzPointer_GetReturnAddress=_BlitzPointer_GetReturnAddress@0")
+#pragma comment(linker, "/EXPORT:BP_GetReturnAddress=_BP_GetReturnAddress@0")
 
-DLL_EXPORT intptr_t BlitzPointer_GetFunctionPointer()
+DLL_METHOD intptr_t DLL_CALL BP_GetFunctionPointer()
 {
 	intptr_t StackPointer, ReturnAddress;
 
@@ -60,4 +60,37 @@ DLL_EXPORT intptr_t BlitzPointer_GetFunctionPointer()
 
 	return 0;
 }
-#pragma comment(linker, "/EXPORT:BlitzPointer_GetFunctionPointer=_BlitzPointer_GetFunctionPointer@0")
+#pragma comment(linker, "/EXPORT:BP_GetFunctionPointer=_BP_GetFunctionPointer@0")
+
+DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointer() {
+	// ToDo: Figure out how to get the pointer of a variable reliably. Must do so without Goto.
+	// - Idea: Have user assign variable to the ptr first? Easier to find.
+	// - Strings are difficult - exclude these?
+	return 0;
+}
+#pragma comment(linker, "/EXPORT:BP_GetVariablePointer=_BP_GetVariablePointer@0")
+
+DLL_METHOD int32_t DLL_CALL BP_CallFunction0(BP_BlitzFunction0_t lpFunctionPointer) {
+	return lpFunctionPointer();
+}
+#pragma comment(linker, "/EXPORT:BP_CallFunction0=_BP_CallFunction0@4")
+
+DLL_METHOD int32_t DLL_CALL BP_CallFunction1(BP_BlitzFunction1_t lpFunctionPointer, int32_t p1) {
+	return lpFunctionPointer(p1);
+}
+#pragma comment(linker, "/EXPORT:BP_CallFunction1=_BP_CallFunction1@8")
+
+DLL_METHOD int32_t DLL_CALL BP_CallFunction2(BP_BlitzFunction2_t lpFunctionPointer, int32_t p1, int32_t p2) {
+	return lpFunctionPointer(p1, p2);
+}
+#pragma comment(linker, "/EXPORT:BP_CallFunction2=_BP_CallFunction2@12")
+
+DLL_METHOD int32_t DLL_CALL BP_CallFunction3(BP_BlitzFunction3_t lpFunctionPointer, int32_t p1, int32_t p2, int32_t p3) {
+	return lpFunctionPointer(p1, p2, p3);
+}
+#pragma comment(linker, "/EXPORT:BP_CallFunction3=_BP_CallFunction3@16")
+
+DLL_METHOD int32_t DLL_CALL BP_CallFunction4(BP_BlitzFunction4_t lpFunctionPointer, int32_t p1, int32_t p2, int32_t p3, int32_t p4) {
+	return lpFunctionPointer(p1, p2, p3, p4);
+}
+#pragma comment(linker, "/EXPORT:BP_CallFunction4=_BP_CallFunction4@20")

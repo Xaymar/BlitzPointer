@@ -38,14 +38,14 @@ Global fpOurFunction = 0
 
 ; Our function can be anything we want, however we must be able to call it once
 ;  without effect before we can actually retrieve the function pointer. Why?
-; Simple! The BlitzPointer_GetFunctionPointer traces the return address for the
+; Simple! The BP_GetFunctionPointer traces the return address for the
 ;  Blitz function signature - and thus can't work outside a function.
 Function OurFunction()
 ;	Let's begin by checking if we already have the pointer. Not required, but
 ;	 we do it anyway to save some scanning time on every call.
 	If fpOurFunction = 0 Then
 ;		Now let us call the above mentioned function to retrieve the pointer.
-		fpOurFunction = BlitzPointer_GetFunctionPointer()
+		fpOurFunction = BP_GetFunctionPointer()
 ;		Weether you use a Return or an Else is up to you. Return is technically
 ;		 faster in Blitz, as using Else causes a complex ASM construction.
 		Return

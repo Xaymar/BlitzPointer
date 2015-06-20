@@ -18,18 +18,21 @@
 #include "dllmain.h"
 #include <string>
 
-DLL_EXPORT intptr_t BlitzPointer_GetReturnAddress();
-DLL_EXPORT intptr_t BlitzPointer_GetFunctionPointer();
+// Types of Blitz Functions.
+typedef int32_t(__stdcall *BP_BlitzFunction0_t)();
+typedef int32_t(__stdcall *BP_BlitzFunction1_t)(int32_t);
+typedef int32_t(__stdcall *BP_BlitzFunction2_t)(int32_t, int32_t);
+typedef int32_t(__stdcall *BP_BlitzFunction3_t)(int32_t, int32_t, int32_t);
+typedef int32_t(__stdcall *BP_BlitzFunction4_t)(int32_t, int32_t, int32_t, int32_t);
 
-// Defines for easier function generation.
-#define CALLFUNCTION_DECL_BEGIN(NAME)					DLL_EXPORT int32_t BlitzPointer_CallFunction##NAME(intptr_t lpFunctionPointer
-#define CALLFUNCTION_DECL_PARAMETER(TYPE, NAME)			, TYPE NAME
-#define CALLFUNCTION_DECL_END()							)
-#define CALLFUNCTION_IMPL_BEGIN()						{ 
-#define CALLFUNCTION_IMPL_SAFEGUARD()					if (!lpFunctionPointer) return NULL;
-#define CALLFUNCTION_IMPL_PREPARE(COUNT)				__asm SUB ESP, COUNT * 4
-#define CALLFUNCTION_IMPL_PARAMETER(INDEX, NAME)		__asm MOV EAX, [NAME] __asm MOV [ESP + INDEX * 4], EAX
-#define CALLFUNCTION_IMPL_CALL()						__asm CALL DWORD ptr[lpFunctionPointer]
-#define CALLFUNCTION_IMPL_RESULT()						int32_t result; __asm MOV [result], EAX
-#define CALLFUNCTION_IMPL_RETURN()						return result; 
-#define CALLFUNCTION_IMPL_END()							}
+// Basic Functionality (Pointer retrieval)
+DLL_METHOD intptr_t DLL_CALL BP_GetReturnAddress();
+DLL_METHOD intptr_t DLL_CALL BP_GetFunctionPointer();
+DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointer();
+
+// Native Blitz Function Calls
+DLL_METHOD int32_t DLL_CALL BP_CallFunction0(BP_BlitzFunction0_t lpFunctionPointer);
+DLL_METHOD int32_t DLL_CALL BP_CallFunction1(BP_BlitzFunction1_t lpFunctionPointer, int32_t p1);
+DLL_METHOD int32_t DLL_CALL BP_CallFunction2(BP_BlitzFunction2_t lpFunctionPointer, int32_t p1, int32_t p2);
+DLL_METHOD int32_t DLL_CALL BP_CallFunction3(BP_BlitzFunction3_t lpFunctionPointer, int32_t p1, int32_t p2, int32_t p3);
+DLL_METHOD int32_t DLL_CALL BP_CallFunction4(BP_BlitzFunction4_t lpFunctionPointer, int32_t p1, int32_t p2, int32_t p3, int32_t p4);

@@ -54,7 +54,7 @@ Function TGenericUpdate()
 	Local This.TGeneric
 	For This = Each TGeneric
 		If This\Pointer <> 0 Then
-			If BlitzPointer_CallFunctionII(CallbackIndex(This\Index), This\Pointer) Then
+			If BP_CallFunctionII(CallbackIndex(This\Index), This\Pointer) Then
 				Delete This
 			EndIf
 		EndIf
@@ -98,7 +98,7 @@ End Function
 
 Function TCubeCallback%(This.TCube)
 	If CallbackIndex(CALLBACK_INDEX_TCUBE) = 0 Then
-		CallbackIndex(CALLBACK_INDEX_TCUBE) = BlitzPointer_GetFunctionPointer()
+		CallbackIndex(CALLBACK_INDEX_TCUBE) = BP_GetFunctionPointer()
 		Return
 	EndIf
 	; Safeguard against stupidity (it affect everyone).
@@ -156,7 +156,7 @@ End Function
 
 Function TSphereUpdate%(This.TSphere)
 	If CallbackIndex(CALLBACK_INDEX_TSPHERE) = 0 Then
-		CallbackIndex(CALLBACK_INDEX_TSPHERE) = BlitzPointer_GetFunctionPointer()
+		CallbackIndex(CALLBACK_INDEX_TSPHERE) = BP_GetFunctionPointer()
 		Return
 	EndIf
 	; Safeguard against stupidity (it affect everyone).

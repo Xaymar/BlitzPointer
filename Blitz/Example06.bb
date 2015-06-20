@@ -82,7 +82,7 @@ End Type
 Global fpMyPointerFunction% = 0
 Function MyPointerFunction(Pointer%)
 	If fpMyPointerFunction = 0 Then
-		fpMyPointerFunction = BlitzPointer_GetFunctionPointer()
+		fpMyPointerFunction = BP_GetFunctionPointer()
 		Return
 	EndIf
 	

@@ -41,7 +41,7 @@ End Type
 Global fpMyTypeFunc = 0
 Function MyTypeFunc(This.MyType)
 	If fpMyTypeFunc = 0 Then
-		fpMyTypeFunc = BlitzPointer_GetFunctionPointer()
+		fpMyTypeFunc = BP_GetFunctionPointer()
 		Return
 	EndIf
 	If This = Null Then Return
@@ -64,8 +64,8 @@ While Not KeyHit(1)
 	
 ;    Now in order to pass a Type Object to a function, we have to get a pointer
 ;     from it. Thankfully, Blitz has this already built in: Int().
-	If KeyDown(2) Then BlitzPointer_CallFunctionVI fpMyTypeFunc, Int(MT1)
-	If KeyDown(3) Then BlitzPointer_CallFunctionVI fpMyTypeFunc, Int(MT2)
+	If KeyDown(2) Then BP_CallFunctionVI fpMyTypeFunc, Int(MT1)
+	If KeyDown(3) Then BP_CallFunctionVI fpMyTypeFunc, Int(MT2)
 	
 	ExampleLoop()
 Wend

@@ -31,9 +31,9 @@
 ; ---------------------------------------------------------------------------- ;
 ;  Type    Id  Description      Calling Function
 ; ---------------------------------------------------------------------------- ;
-;   int     I   32-bit Integer   BlitzPointer_CallFunction*I
-;   float   F   Floating Point   BlitzPointer_CallFunction*F
-;   pointer P   Memory Pointer   BlitzPointer_CallFunction*P
+;   int     I   32-bit Integer   BP_CallFunction*I
+;   float   F   Floating Point   BP_CallFunction*F
+;   pointer P   Memory Pointer   BP_CallFunction*P
 
 ; Watch out:
 ;  Calling a function that has parameters without giving enough parameters will
@@ -47,7 +47,7 @@ ExampleInit()
 Global fpCurInGameSecond = 0
 Function CurInGameSecond%(p1%=0)
 	If fpCurInGameSecond = 0 Then
-		fpCurInGameSecond = BlitzPointer_GetFunctionPointer()
+		fpCurInGameSecond = BP_GetFunctionPointer()
 		Return
 	EndIf
 	Text   5, 15, "IIFunction"
@@ -61,7 +61,7 @@ CurInGameSecond()
 Global fpCurInGameSecondEx = 0
 Function CurInGameSecondEx#(p1%=0, p2#=0)
 	If fpCurInGameSecondEx = 0 Then
-		fpCurInGameSecondEx = BlitzPointer_GetFunctionPointer()
+		fpCurInGameSecondEx = BP_GetFunctionPointer()
 		Return
 	EndIf
 	
@@ -78,7 +78,7 @@ CurInGameSecondEx()
 Global fpConvertIntFloat
 Function ConvertIntFloat#(p1#=0)
 	If fpConvertIntFloat = 0 Then
-		fpConvertIntFloat = BlitzPointer_GetFunctionPointer()
+		fpConvertIntFloat = BP_GetFunctionPointer()
 		Print Hex(fpConvertIntFloat)
 		WaitKey()
 		Return
@@ -101,18 +101,18 @@ While Not KeyHit(1)
 	Text 480, 0, "Parameter 4"
 	Text 600, 0, "Result"
 	
-	Text 605, 15, BlitzPointer_CallFunctionII(fpCurInGameSecond, Frame)
-	Text 605, 30, BlitzPointer_CallFunctionFIF(fpCurInGameSecondEx, Frame, 0.016666666)
+	Text 605, 15, BP_CallFunctionII(fpCurInGameSecond, Frame)
+	Text 605, 30, BP_CallFunctionFIF(fpCurInGameSecondEx, Frame, 0.016666666)
 	
 	Local TempFlt# = Frame / 60.0
-	Local TempInt% = BlitzPointer_CallFunctionIF(fpConvertIntFloat, TempFlt)
+	Local TempInt% = BP_CallFunctionIF(fpConvertIntFloat, TempFlt)
 	Text   5, 60, "Float -> Int"
 	Text 125, 60, TempFlt
 	Text 605, 60, Hex(TempInt)
 	
 	Text   5, 75, "Int -> Float"
 	Text 125, 75, Hex(TempInt)
-	Text 605, 75, BlitzPointer_CallFunctionFI(fpConvertIntFloat, TempInt)
+	Text 605, 75, BP_CallFunctionFI(fpConvertIntFloat, TempInt)
 	
 	ExampleLoop()
 	

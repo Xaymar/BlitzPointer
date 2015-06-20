@@ -14,9 +14,7 @@
 //	You should have received a copy of the GNU Lesser General Public License
 //	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-// STL Exceptions
-#include <exception>
-#include <stdexcept>
+#pragma once
 
 // Memory Management
 #include <memory>
@@ -25,4 +23,9 @@
 #include <windows.h>
 
 // Macros
-#define DLL_EXPORT extern "C" //__declspec(dllexport)
+#ifndef IMPORT
+#define DLL_METHOD extern "C" //__declspec(dllexport)
+#else
+#define DLL_METHOD extern "c" __declspec(dllimport)
+#endif
+#define DLL_CALL __stdcall
