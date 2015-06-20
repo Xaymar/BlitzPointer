@@ -17,6 +17,7 @@
 // Idea take from Code by Noodoby<http://www.blitzforum.de/forum/viewtopic.php?t=31651>
 // New Code by Xaymar<http://project-kube.de>
 
+#pragma once
 #include "BlitzPointer.h"
 
 DLL_METHOD intptr_t DLL_CALL BP_GetReturnAddress() {
