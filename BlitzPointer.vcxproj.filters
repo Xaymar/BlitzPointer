@@ -18,6 +18,9 @@
       <UniqueIdentifier>{df5bf7dd-7995-49a8-b534-f2c83a65ad87}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Blitz Files\Examples">
+      <UniqueIdentifier>{2045f2b8-f3b8-4e65-80eb-459d4e00cd5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -48,32 +51,35 @@
     <None Include="BlitzPointer.decls">
       <Filter>Blitz Files</Filter>
     </None>
-    <None Include="Examples\BlitzPointer.ipf">
-      <Filter>Blitz Files</Filter>
-    </None>
     <None Include="Examples\Example_Shared.bb">
-      <Filter>Blitz Files</Filter>
+      <Filter>Blitz Files\Examples</Filter>
     </None>
     <None Include="Examples\Example01.bb">
-      <Filter>Blitz Files</Filter>
+      <Filter>Blitz Files\Examples</Filter>
     </None>
     <None Include="Examples\Example02.bb">
-      <Filter>Blitz Files</Filter>
+      <Filter>Blitz Files\Examples</Filter>
     </None>
     <None Include="Examples\Example03.bb">
-      <Filter>Blitz Files</Filter>
+      <Filter>Blitz Files\Examples</Filter>
     </None>
     <None Include="Examples\Example04.bb">
-      <Filter>Blitz Files</Filter>
+      <Filter>Blitz Files\Examples</Filter>
     </None>
     <None Include="Examples\Example05.bb">
-      <Filter>Blitz Files</Filter>
+      <Filter>Blitz Files\Examples</Filter>
     </None>
     <None Include="Examples\Example06.bb">
-      <Filter>Blitz Files</Filter>
+      <Filter>Blitz Files\Examples</Filter>
     </None>
     <None Include="Examples\Example07.bb">
-      <Filter>Blitz Files</Filter>
+      <Filter>Blitz Files\Examples</Filter>
+    </None>
+    <None Include="Examples\Example08.bb">
+      <Filter>Blitz Files\Examples</Filter>
+    </None>
+    <None Include="Examples\BlitzPointer.ipf">
+      <Filter>Blitz Files\Examples</Filter>
     </None>
   </ItemGroup>
 </Project>

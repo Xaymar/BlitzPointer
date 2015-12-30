@@ -56,8 +56,9 @@ DLL_METHOD intptr_t DLL_CALL BP_GetFunctionPointer()
 				if (*(curPtr + 2) == 0x57)									// push edi
 					if (*(curPtr + 3) == 0x55)								// push ebp
 						if (*(curPtr + 4) == 0x89 && *(curPtr + 5) == 0xE5)	// mov ebp,esp
-							return (intptr_t)curPtr;
+							return reinterpret_cast<intptr_t>(curPtr);
 	}
+	// This can be done more efficiently, just look twice for the return address.
 
 	return 0;
 }
@@ -74,6 +75,7 @@ DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointer(int32_t pVariable)
 		pop ReturnAddress;			// Just like this.
 		mov esp, [StackPointer];	// And then reset the Stack Pointer.
 	}
+
 	// The Variable pointer that is used is at -9 bytes offset to the return address.
 	return *reinterpret_cast<int32_t*>(ReturnAddress - 9);
 }
