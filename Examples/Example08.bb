@@ -1,5 +1,5 @@
 ;	BlitzPointer - Adding Pointers to Blitz.
-;	Copyright (C) 2015 Project Kube (Michael Fabian Dirks)
+;	Copyright (C) 2015 Xaymar (Michael Fabian Dirks)
 ;
 ;	This program is free software: you can redistribute it and/or modify
 ;	it under the terms of the GNU Lesser General Public License as
@@ -15,29 +15,70 @@
 ;	along with this program.  If not, see <http:;www.gnu.org/licenses/>.
 
 ; ---------------------------------------------------------------------------- ;
-; Example 6 - Variable Pointers
+; Example 8 - Variable-pointers
 ; ---------------------------------------------------------------------------- ;
-; Variable Pointers, the one thing we have all waited for in addition to every-
-;  thing else. Now we can pass things by reference instead of copying to & from
-;  a bank. Unfortunately it only works for Integers, Floats and Types.
+; Variable-pointers are really neat. Not only can you have a single variable for
+;  a lot of things in many locations (even across thread) but you can pass them
+;  to DLLs too! This opens up Blitz to a whole new way of working with DLLs.
 
-; For Integers, all you have to do is declare a variable and then call the func-
-;  tion that retrieves the pointer:
-Global MyVariable% = 1
-Global MyVariablePtr% = 0
-MyVariablePtr = BP_GetVariablePointerInt(MyVariable)
+; Three functions were added for this, each for the respective type
+; - BP_GetVariablePointerInt(Int%) 
+; - BP_GetVariablePointerFloat(Float#)
+; - BP_GetVariablePointerType(Type.)
+; (Strings are not supported sorry.)
 
-; Same for Floats, slightly different function though
-Global MyVariable2# = 1.2
-Global MyVariable2Ptr% = 0
-MyVariable2Ptr = BP_GetVariablePointerFloat(MyVariable2)
+; Integers and Floats are really simple, just declare them and grab the pointer.
+Global MyInteger% = 66
+Global MyFloat# = 66.6
+Global Pointer% = 0
 
-; Now we can directly modify them in memory, which means that we can modify them
-;  from anywhere - inside and outside our program. What you do with this is up
-;  to your imagination, just don't fuck up. Computers don't like that.
+; Grab the Integer Pointer and modify the value.
+Pointer = BP_GetVariablePointerInt(MyInteger)
+Print "MyInteger: " + PeekMemoryInt(Pointer)
+PokeMemoryInt(Pointer, 33)
+Print "MyInteger: " + PeekMemoryInt(Pointer)
 
-; Usage Example
-Print MyVariable
-PokeMemoryInt(MyVariable, 283)
-Print MyVariable
+; Grab the Float Pointer and modify the value.
+Pointer = BP_GetVariablePointerFloat(MyFloat)
+Print "MyFloat: " + PeekMemoryFloat(Pointer)
+PokeMemoryFloat(Pointer, 33.3)
+Print "MyFloat: " + PeekMemoryFloat(Pointer)
 
+; Types are a tiny bit harder but open up so many possibilities once you get
+;  used to them. Start by defining a Type, we'll use a simple one for this.
+Type MyType
+	Field Check%
+End Type
+
+; Now create some elements that we can use when modifying the pointer
+Global MyElement.MyType = New MyType
+Global MyElement1.MyType = New MyType
+Global MyElement2.MyType = New MyType
+Global MyElement3.MyType = New MyType
+MyElement\Check = -1
+MyElement1\Check = $F
+MyElement2\Check = $FF
+MyElement3\Check = $FFF
+
+; Store the Pointer and original element.
+Pointer = BP_GetVariablePointerType(MyElement)
+Local TempPointer% = PeekMemoryInt(Pointer)
+
+; Modifying is as simple as storing a new value to the address the pointer is
+;  pointing at. The Int() thing is explained in Example 5.
+Print "MyElement\Check: " + MyElement\Check
+PokeMemoryInt(Pointer, Int(MyElement1))
+Print "MyElement\Check: " + MyElement\Check
+PokeMemoryInt(Pointer, Int(MyElement2))
+Print "MyElement\Check: " + MyElement\Check
+PokeMemoryInt(Pointer, Int(MyElement3))
+Print "MyElement\Check: " + MyElement\Check
+
+; Always return things to their original condition. Just in case.
+PokeMemoryInt(Pointer, TempPointer)
+Print "MyElement\Check: " + MyElement\Check
+
+WaitKey()
+
+; You can do some magic with this, such as iterating through types yourself by
+;  changing the pointer to the next element or previous element. See Example 6.

@@ -1,5 +1,5 @@
 //	BlitzPointer - Adding Pointers to Blitz.
-//	Copyright (C) 2015 Project Kube (Michael Fabian Dirks)
+//	Copyright (C) 2015 Xaymar (Michael Fabian Dirks)
 //
 //	This program is free software: you can redistribute it and/or modify
 //	it under the terms of the GNU Lesser General Public License as
@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Idea take from Code by Noodoby<http://www.blitzforum.de/forum/viewtopic.php?t=31651>
-// New Code by Xaymar<http://project-kube.de>
+// New Code by Xaymar<http://xaymar.com>
 
 #pragma once
 #include "BlitzPointer.h"
@@ -79,7 +79,23 @@ DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointer(int32_t pVariable)
 	// The Variable pointer that is used is at -9 bytes offset to the return address.
 	return *reinterpret_cast<int32_t*>(ReturnAddress - 9);
 }
-#pragma comment(linker, "/EXPORT:BP_GetVariablePointer=_BP_GetVariablePointer@0")
+#pragma comment(linker, "/EXPORT:BP_GetVariablePointer=_BP_GetVariablePointer@4")
+
+DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointerType( int32_t pVariable ) {
+	intptr_t StackPointer, ReturnAddress;
+
+	__asm { //ASM. Do touch if suicidal.
+		mov StackPointer, esp;		// Store current Stack Pointer
+		mov esp, ebp;				// On X86, EBP[0] is our own function and EBP[1] is the return address.
+		add esp, 4;					// Which means that we can just take it from there into our own variable.
+		pop ReturnAddress;			// Just like this.
+		mov esp, [StackPointer];	// And then reset the Stack Pointer.
+	}
+
+	// The Variable pointer that is used is at -9 bytes offset to the return address.
+	return *reinterpret_cast<int32_t*>(ReturnAddress - 11);
+}
+#pragma comment(linker, "/EXPORT:BP_GetVariablePointerType=_BP_GetVariablePointerType@4")
 
 DLL_METHOD int32_t DLL_CALL BP_CallFunction0(BP_BlitzFunction0_t lpFunctionPointer) {
 	return lpFunctionPointer();

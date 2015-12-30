@@ -1,5 +1,5 @@
 ;	BlitzPointer - Adding Pointers to Blitz.
-;	Copyright (C) 2015 Project Kube (Michael Fabian Dirks)
+;	Copyright (C) 2015 Xaymar (Michael Fabian Dirks)
 ;
 ;	This program is free software: you can redistribute it and/or modify
 ;	it under the terms of the GNU Lesser General Public License as
@@ -19,10 +19,10 @@
 ; BlitzPointer
 BP_GetReturnAddress%()
 BP_GetFunctionPointer%()
-;BP_GetVariablePointer%()
+;BP_GetVariablePointer%(pVariable%)
 BP_GetVariablePointerInt%(pVariable%) : "BP_GetVariablePointer"
 BP_GetVariablePointerFloat%(pVariable#) : "BP_GetVariablePointer"
-BP_GetVariablePointerType%(pVariable*) : "BP_GetVariablePointer"
+BP_GetVariablePointerType%(pVariable*) : "BP_GetVariablePointerType"
 
 ; Memory Modification
 PeekMemoryByte%(lpMemoryPointer%)

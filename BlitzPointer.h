@@ -1,5 +1,5 @@
 //	BlitzPointer - Adding Pointers to Blitz.
-//	Copyright (C) 2015 Project Kube (Michael Fabian Dirks)
+//	Copyright (C) 2015 Xaymar (Michael Fabian Dirks)
 //
 //	This program is free software: you can redistribute it and/or modify
 //	it under the terms of the GNU Lesser General Public License as
@@ -30,6 +30,7 @@ typedef int32_t(__stdcall *BP_BlitzFunction5_t)(int32_t, int32_t, int32_t, int32
 DLL_METHOD intptr_t DLL_CALL BP_GetReturnAddress();
 DLL_METHOD intptr_t DLL_CALL BP_GetFunctionPointer();
 DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointer(int32_t pVariable);
+DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointerType(int32_t pVariable);
 
 // Native Blitz Function Calls
 DLL_METHOD int32_t DLL_CALL BP_CallFunction0(BP_BlitzFunction0_t lpFunctionPointer);
