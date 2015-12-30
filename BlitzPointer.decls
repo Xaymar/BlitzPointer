@@ -19,7 +19,10 @@
 ; BlitzPointer
 BP_GetReturnAddress%()
 BP_GetFunctionPointer%()
-BP_GetVariablePointer%()
+;BP_GetVariablePointer%()
+BP_GetVariablePointerInt%(pVariable%) : "BP_GetVariablePointer"
+BP_GetVariablePointerFloat%(pVariable#) : "BP_GetVariablePointer"
+BP_GetVariablePointerType%(pVariable*) : "BP_GetVariablePointer"
 
 ; Memory Modification
 PeekMemoryByte%(lpMemoryPointer%)

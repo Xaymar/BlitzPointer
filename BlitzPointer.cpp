@@ -63,11 +63,19 @@ DLL_METHOD intptr_t DLL_CALL BP_GetFunctionPointer()
 }
 #pragma comment(linker, "/EXPORT:BP_GetFunctionPointer=_BP_GetFunctionPointer@0")
 
-DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointer() {
-	// ToDo: Figure out how to get the pointer of a variable reliably. Must do so without Goto.
-	// - Idea: Have user assign variable to the ptr first? Easier to find.
-	// - Strings are difficult - exclude these?
-	return 0;
+DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointer(int32_t pVariable)
+{
+	intptr_t StackPointer, ReturnAddress;
+
+	__asm { //ASM. Do touch if suicidal.
+		mov StackPointer, esp;		// Store current Stack Pointer
+		mov esp, ebp;				// On X86, EBP[0] is our own function and EBP[1] is the return address.
+		add esp, 4;					// Which means that we can just take it from there into our own variable.
+		pop ReturnAddress;			// Just like this.
+		mov esp, [StackPointer];	// And then reset the Stack Pointer.
+	}
+	// The Variable pointer that is used is at -9 bytes offset to the return address.
+	return *reinterpret_cast<int32_t*>(ReturnAddress - 9);
 }
 #pragma comment(linker, "/EXPORT:BP_GetVariablePointer=_BP_GetVariablePointer@0")
 

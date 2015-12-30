@@ -39,41 +39,41 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Blitz\Example05.bb">
-      <Filter>Blitz Files</Filter>
-    </None>
-    <None Include="Blitz\BlitzPointer.decls">
-      <Filter>Blitz Files</Filter>
-    </None>
-    <None Include="Blitz\BlitzPointer.ipf">
-      <Filter>Blitz Files</Filter>
-    </None>
-    <None Include="Blitz\Example_Shared.bb">
-      <Filter>Blitz Files</Filter>
-    </None>
-    <None Include="Blitz\Example01.bb">
-      <Filter>Blitz Files</Filter>
-    </None>
-    <None Include="Blitz\Example02.bb">
-      <Filter>Blitz Files</Filter>
-    </None>
-    <None Include="Blitz\Example03.bb">
-      <Filter>Blitz Files</Filter>
-    </None>
-    <None Include="Blitz\Example04.bb">
-      <Filter>Blitz Files</Filter>
-    </None>
-    <None Include="Blitz\Example06.bb">
-      <Filter>Blitz Files</Filter>
-    </None>
-    <None Include="Blitz\Example07.bb">
-      <Filter>Blitz Files</Filter>
-    </None>
     <None Include="LICENSE">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="LICENSE.lesser">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="BlitzPointer.decls">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Examples\BlitzPointer.ipf">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Examples\Example_Shared.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Examples\Example01.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Examples\Example02.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Examples\Example03.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Examples\Example04.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Examples\Example05.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Examples\Example06.bb">
+      <Filter>Blitz Files</Filter>
+    </None>
+    <None Include="Examples\Example07.bb">
+      <Filter>Blitz Files</Filter>
     </None>
   </ItemGroup>
 </Project>

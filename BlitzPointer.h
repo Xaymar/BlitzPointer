@@ -29,7 +29,7 @@ typedef int32_t(__stdcall *BP_BlitzFunction5_t)(int32_t, int32_t, int32_t, int32
 // Basic Functionality (Pointer retrieval)
 DLL_METHOD intptr_t DLL_CALL BP_GetReturnAddress();
 DLL_METHOD intptr_t DLL_CALL BP_GetFunctionPointer();
-DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointer();
+DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointer(int32_t pVariable);
 
 // Native Blitz Function Calls
 DLL_METHOD int32_t DLL_CALL BP_CallFunction0(BP_BlitzFunction0_t lpFunctionPointer);
