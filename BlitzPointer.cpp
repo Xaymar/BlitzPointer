@@ -53,6 +53,21 @@ DLL_METHOD intptr_t DLL_CALL BP_GetFunctionPointer()
 }
 #pragma comment(linker, "/EXPORT:BP_GetFunctionPointer=_BP_GetFunctionPointer@0")
 
+// Didn't work out, overloading a Runtime Function makes it disappear.
+/*DLL_METHOD intptr_t DLL_CALL BP_GetLastCalledFunctionPointer( )
+{
+	// Scan backwards in executable memory for a eax assign.
+	return 0;
+}
+#pragma comment(linker, "/EXPORT:BP_GetLastCalledFunctionPointer=_BP_GetLastCalledFunctionPointer@0")
+
+DLL_METHOD intptr_t DLL_CALL BP_GetNextCalledFunctionPointer()
+{
+	// Scan forwards in executable memory for a eax assign.
+	return 0;
+}
+#pragma comment(linker, "/EXPORT:BP_GetNextCalledFunctionPointer=_BP_GetNextCalledFunctionPointer@0")*/
+
 DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointer(int32_t pVariable)
 {
 	intptr_t BasePointer;

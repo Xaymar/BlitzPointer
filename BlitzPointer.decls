@@ -19,6 +19,8 @@
 ; BlitzPointer
 BP_GetReturnAddress%()
 BP_GetFunctionPointer%()
+BP_GetLastCalledFunctionPointer%()
+BP_GetNextCalledFunctionPointer%()
 ;BP_GetVariablePointer%(pVariable%)
 BP_GetVariablePointerInt%(pVariable%) : "BP_GetVariablePointer"
 BP_GetVariablePointerFloat%(pVariable#) : "BP_GetVariablePointer"
