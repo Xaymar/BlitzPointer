@@ -29,7 +29,9 @@ DLL_METHOD intptr_t DLL_CALL BP_GetReturnAddress() {
 
 	// Blitz uses X86 Call-Near (E8) instructions to call its own functions.
 	// We can simply deduce the Return Address like this because of that.
-	ReturnAddress = *reinterpret_cast<intptr_t*>(*reinterpret_cast<intptr_t*>(*reinterpret_cast<intptr_t*>(BasePointer)) - 8);
+	//-- Parent_EBP = *EBP
+	//-- Parent_RP = Parent_EBP + 16
+	ReturnAddress = (*((intptr_t*)BasePointer) + 16);
 
 	return ReturnAddress;
 }
@@ -45,15 +47,19 @@ DLL_METHOD intptr_t DLL_CALL BP_GetFunctionPointer()
 
 	// Blitz uses X86 Call-Near (E8) instructions to call its own functions.
 	// We can simply deduce the Return Address like this because of that.
-	ReturnAddress = *reinterpret_cast<intptr_t*>(*reinterpret_cast<intptr_t*>(*reinterpret_cast<intptr_t*>(BasePointer)) - 8);
+	//-- Parent_EBP = *EBP
+	//-- Parent_RP = Parent_EBP + 16
+	ReturnAddress = *(intptr_t*)((*(intptr_t*)BasePointer) + 16);
+
 	// And since it's a Call-Near, the call is offset to the return address.
-	FunctionPointer = ReturnAddress + *reinterpret_cast<intptr_t*>(ReturnAddress - 4);
+	FunctionPointer = ReturnAddress + *(intptr_t*)(ReturnAddress - 4);
 
 	return FunctionPointer;
 }
 #pragma comment(linker, "/EXPORT:BP_GetFunctionPointer=_BP_GetFunctionPointer@0")
 
 // Didn't work out, overloading a Runtime Function makes it disappear.
+// At 0x00100000 (Process begin stuff) there's a list of functions? What the hell Mark?
 /*DLL_METHOD intptr_t DLL_CALL BP_GetLastCalledFunctionPointer( )
 {
 	// Scan backwards in executable memory for a eax assign.
