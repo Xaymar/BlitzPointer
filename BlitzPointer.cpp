@@ -31,7 +31,7 @@ DLL_METHOD intptr_t DLL_CALL BP_GetReturnAddress() {
 	// We can simply deduce the Return Address like this because of that.
 	//-- Parent_EBP = *EBP
 	//-- Parent_RP = Parent_EBP + 16
-	ReturnAddress = (*((intptr_t*)BasePointer) + 16);
+	ReturnAddress = *(intptr_t*)((*(intptr_t*)BasePointer) + 16);
 
 	return ReturnAddress;
 }
