@@ -21,6 +21,7 @@
 #include "BlitzPointer.h"
 
 DLL_METHOD intptr_t DLL_CALL BP_GetReturnAddress() {
+#pragma comment(linker, "/EXPORT:BP_GetReturnAddress=_BP_GetReturnAddress@0")
 	intptr_t BasePointer, ReturnAddress;
 
 	__asm { //ASM. Do touch if suicidal.
@@ -35,10 +36,9 @@ DLL_METHOD intptr_t DLL_CALL BP_GetReturnAddress() {
 
 	return ReturnAddress;
 }
-#pragma comment(linker, "/EXPORT:BP_GetReturnAddress=_BP_GetReturnAddress@0")
 
-DLL_METHOD intptr_t DLL_CALL BP_GetFunctionPointer()
-{
+DLL_METHOD intptr_t DLL_CALL BP_GetFunctionPointer() {
+#pragma comment(linker, "/EXPORT:BP_GetFunctionPointer=_BP_GetFunctionPointer@0")
 	intptr_t BasePointer, ReturnAddress, FunctionPointer;
 
 	__asm { //ASM. Do touch if suicidal.
@@ -56,75 +56,57 @@ DLL_METHOD intptr_t DLL_CALL BP_GetFunctionPointer()
 
 	return FunctionPointer;
 }
-#pragma comment(linker, "/EXPORT:BP_GetFunctionPointer=_BP_GetFunctionPointer@0")
 
-// Didn't work out, overloading a Runtime Function makes it disappear.
-// At 0x00100000 (Process begin stuff) there's a list of functions? What the hell Mark?
-/*DLL_METHOD intptr_t DLL_CALL BP_GetLastCalledFunctionPointer( )
-{
-	// Scan backwards in executable memory for a eax assign.
-	return 0;
-}
-#pragma comment(linker, "/EXPORT:BP_GetLastCalledFunctionPointer=_BP_GetLastCalledFunctionPointer@0")
-
-DLL_METHOD intptr_t DLL_CALL BP_GetNextCalledFunctionPointer()
-{
-	// Scan forwards in executable memory for a eax assign.
-	return 0;
-}
-#pragma comment(linker, "/EXPORT:BP_GetNextCalledFunctionPointer=_BP_GetNextCalledFunctionPointer@0")*/
-
-DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointer(int32_t pVariable)
-{
-	intptr_t BasePointer;
-
-	__asm { //ASM. Do touch if suicidal.
-		mov BasePointer, ebp;		// Store current BasePointer
-	}
-
-	// The Variable pointer that is used is at -9 bytes offset to the return address.
-	return *reinterpret_cast<int32_t*>(*reinterpret_cast<intptr_t*>(BasePointer + 4) - 9);
-}
+DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointer(int32_t pVariable) {
 #pragma comment(linker, "/EXPORT:BP_GetVariablePointer=_BP_GetVariablePointer@4")
-
-DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointerType( int32_t pVariable ) {
 	intptr_t BasePointer;
 
 	__asm { //ASM. Do touch if suicidal.
 		mov BasePointer, ebp;		// Store current BasePointer
 	}
 
-	// The Variable pointer that is used is at -11 bytes offset to the return address.
-	return *reinterpret_cast<int32_t*>(*reinterpret_cast<intptr_t*>(BasePointer + 4) - 11);
+	// The Variable pointer that is used is at -9 bytes offset to the return address of this function.
+	return *(intptr_t*)(*(intptr_t*)(BasePointer + 4) - 9);
 }
+
+DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointerType(int32_t pVariable) {
 #pragma comment(linker, "/EXPORT:BP_GetVariablePointerType=_BP_GetVariablePointerType@4")
+	intptr_t BasePointer;
+
+	__asm { //ASM. Do touch if suicidal.
+		mov BasePointer, ebp;		// Store current BasePointer
+	}
+
+	// The Variable pointer that is used is at -11 bytes offset to the return address of this function.
+	return *(intptr_t*)(*(intptr_t*)(BasePointer + 4) - 11);
+}
 
 DLL_METHOD int32_t DLL_CALL BP_CallFunction0(BP_BlitzFunction0_t lpFunctionPointer) {
+#pragma comment(linker, "/EXPORT:BP_CallFunction0=_BP_CallFunction0@4")
 	return lpFunctionPointer();
 }
-#pragma comment(linker, "/EXPORT:BP_CallFunction0=_BP_CallFunction0@4")
 
 DLL_METHOD int32_t DLL_CALL BP_CallFunction1(BP_BlitzFunction1_t lpFunctionPointer, int32_t p1) {
+#pragma comment(linker, "/EXPORT:BP_CallFunction1=_BP_CallFunction1@8")
 	return lpFunctionPointer(p1);
 }
-#pragma comment(linker, "/EXPORT:BP_CallFunction1=_BP_CallFunction1@8")
 
 DLL_METHOD int32_t DLL_CALL BP_CallFunction2(BP_BlitzFunction2_t lpFunctionPointer, int32_t p1, int32_t p2) {
+#pragma comment(linker, "/EXPORT:BP_CallFunction2=_BP_CallFunction2@12")
 	return lpFunctionPointer(p1, p2);
 }
-#pragma comment(linker, "/EXPORT:BP_CallFunction2=_BP_CallFunction2@12")
 
 DLL_METHOD int32_t DLL_CALL BP_CallFunction3(BP_BlitzFunction3_t lpFunctionPointer, int32_t p1, int32_t p2, int32_t p3) {
+#pragma comment(linker, "/EXPORT:BP_CallFunction3=_BP_CallFunction3@16")
 	return lpFunctionPointer(p1, p2, p3);
 }
-#pragma comment(linker, "/EXPORT:BP_CallFunction3=_BP_CallFunction3@16")
 
 DLL_METHOD int32_t DLL_CALL BP_CallFunction4(BP_BlitzFunction4_t lpFunctionPointer, int32_t p1, int32_t p2, int32_t p3, int32_t p4) {
+#pragma comment(linker, "/EXPORT:BP_CallFunction4=_BP_CallFunction4@20")
 	return lpFunctionPointer(p1, p2, p3, p4);
 }
-#pragma comment(linker, "/EXPORT:BP_CallFunction4=_BP_CallFunction4@20")
 
 DLL_METHOD int32_t DLL_CALL BP_CallFunction5(BP_BlitzFunction5_t lpFunctionPointer, int32_t p1, int32_t p2, int32_t p3, int32_t p4, int32_t p5) {
+#pragma comment(linker, "/EXPORT:BP_CallFunction5=_BP_CallFunction5@24")
 	return lpFunctionPointer(p1, p2, p3, p4, p5);
 }
-#pragma comment(linker, "/EXPORT:BP_CallFunction5=_BP_CallFunction5@24")
