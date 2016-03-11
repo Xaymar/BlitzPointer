@@ -5,21 +5,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Blitz Files">
-      <UniqueIdentifier>{53eae672-7e3f-4de4-af1f-79e46e407a39}</UniqueIdentifier>
-      <ParseFiles>false</ParseFiles>
-      <Extensions>bb;decls;ipf</Extensions>
-    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{527b3491-2ee2-474d-863f-2d21b7abb958}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{df5bf7dd-7995-49a8-b534-f2c83a65ad87}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Blitz Files\Examples">
-      <UniqueIdentifier>{2045f2b8-f3b8-4e65-80eb-459d4e00cd5a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -40,46 +28,5 @@
     <ClInclude Include="dllmain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="LICENSE">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="LICENSE.lesser">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="BlitzPointer.decls">
-      <Filter>Blitz Files</Filter>
-    </None>
-    <None Include="Examples\Example_Shared.bb">
-      <Filter>Blitz Files\Examples</Filter>
-    </None>
-    <None Include="Examples\Example01.bb">
-      <Filter>Blitz Files\Examples</Filter>
-    </None>
-    <None Include="Examples\Example02.bb">
-      <Filter>Blitz Files\Examples</Filter>
-    </None>
-    <None Include="Examples\Example03.bb">
-      <Filter>Blitz Files\Examples</Filter>
-    </None>
-    <None Include="Examples\Example04.bb">
-      <Filter>Blitz Files\Examples</Filter>
-    </None>
-    <None Include="Examples\Example05.bb">
-      <Filter>Blitz Files\Examples</Filter>
-    </None>
-    <None Include="Examples\Example06.bb">
-      <Filter>Blitz Files\Examples</Filter>
-    </None>
-    <None Include="Examples\Example07.bb">
-      <Filter>Blitz Files\Examples</Filter>
-    </None>
-    <None Include="Examples\Example08.bb">
-      <Filter>Blitz Files\Examples</Filter>
-    </None>
-    <None Include="Examples\BlitzPointer.ipf">
-      <Filter>Blitz Files\Examples</Filter>
-    </None>
   </ItemGroup>
 </Project>

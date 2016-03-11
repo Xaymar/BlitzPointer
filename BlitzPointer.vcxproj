@@ -43,13 +43,12 @@
     <OutDir>$(SolutionDir)#Build\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)#Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
     <TargetExt>.dll</TargetExt>
-    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)#Build\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)#Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
     <TargetExt>.dll</TargetExt>
-    <LinkIncremental>false</LinkIncremental>
+    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -82,20 +81,25 @@
       <FloatingPointExceptions>true</FloatingPointExceptions>
       <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ControlFlowGuard>false</ControlFlowGuard>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <Version>1.0</Version>
+      <GenerateDebugInformation>Debug</GenerateDebugInformation>
       <LinkStatus>
       </LinkStatus>
       <CreateHotPatchableImage>Enabled</CreateHotPatchableImage>
       <EnableCOMDATFolding>false</EnableCOMDATFolding>
       <FixedBaseAddress>false</FixedBaseAddress>
+      <LargeAddressAware>false</LargeAddressAware>
+      <OptimizeReferences>false</OptimizeReferences>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
     </Link>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
+    <ProjectReference />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -113,7 +117,7 @@
       <StructMemberAlignment>4Bytes</StructMemberAlignment>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <CreateHotpatchableImage>false</CreateHotpatchableImage>
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <OpenMPSupport>false</OpenMPSupport>
       <ForcedIncludeFiles>
       </ForcedIncludeFiles>
@@ -128,21 +132,24 @@
       <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>None</DebugInformationFormat>
+      <ControlFlowGuard>false</ControlFlowGuard>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateDebugInformation>No</GenerateDebugInformation>
       <EnableCOMDATFolding>false</EnableCOMDATFolding>
-      <OptimizeReferences>
-      </OptimizeReferences>
-      <Version>1.0</Version>
+      <OptimizeReferences>false</OptimizeReferences>
       <LinkStatus>
       </LinkStatus>
       <CreateHotPatchableImage>Enabled</CreateHotPatchableImage>
       <FixedBaseAddress>false</FixedBaseAddress>
+      <LargeAddressAware>false</LargeAddressAware>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <FullProgramDatabaseFile>false</FullProgramDatabaseFile>
     </Link>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
+    <ProjectReference />
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BlitzPointer.cpp" />
@@ -153,71 +160,12 @@
     <ClInclude Include="BlitzPointer.h" />
     <ClInclude Include="dllmain.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="LICENSE">
-      <Link>BlitzPointer.LICENSE</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="LICENSE.lesser">
-      <Link>BlitzPointer.LICENSE.lesser</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="BlitzPointer.decls">
-      <Link>BlitzPointer.decls</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
-    </None>
-    <None Include="Examples\BlitzPointer.ipf">
-      <Link>Examples\BlitzPointer.ipf</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
-    </None>
-    <None Include="Examples\Example_Shared.bb">
-      <Link>Examples\Example_Shared.bb</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
-    </None>
-    <None Include="Examples\Example01.bb">
-      <Link>Examples\Example01.bb</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
-    </None>
-    <None Include="Examples\Example02.bb">
-      <Link>Examples\Example02.bb</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
-    </None>
-    <None Include="Examples\Example03.bb">
-      <Link>Examples\Example03.bb</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
-    </None>
-    <None Include="Examples\Example04.bb">
-      <Link>Examples\Example04.bb</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
-    </None>
-    <None Include="Examples\Example05.bb">
-      <Link>Examples\Example05.bb</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
-    </None>
-    <None Include="Examples\Example06.bb">
-      <Link>Examples\Example06.bb</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
-    </None>
-    <None Include="Examples\Example07.bb">
-      <Link>Examples\Example07.bb</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
-    </None>
-    <None Include="Examples\Example08.bb">
-      <Link>Examples\Example08.bb</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
-    </None>
-  </ItemGroup>
+  <Target Name="CopyResources" AfterTargets="Build">
+    <ItemGroup>
+      <Resources Include="$(ProjectDir)\Resources\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(Resources)" DestinationFiles="@(Resources->'$(TargetDir)%(RecursiveDir)\%(Filename)%(Extension)')" SkipUnchangedFiles="True" UseHardlinksIfPossible="True" />
+  </Target>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

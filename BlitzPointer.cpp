@@ -83,30 +83,102 @@ DLL_METHOD intptr_t DLL_CALL BP_GetVariablePointerType(int32_t pVariable) {
 
 DLL_METHOD int32_t DLL_CALL BP_CallFunction0(BP_BlitzFunction0_t lpFunctionPointer) {
 #pragma comment(linker, "/EXPORT:BP_CallFunction0=_BP_CallFunction0@4")
-	return lpFunctionPointer();
+	int32_t returnValue, StackPointer;
+	
+	__asm { // Store Stack Pointer
+		mov StackPointer, esp;
+	}
+
+	returnValue = lpFunctionPointer();
+
+	__asm { // Restore Stack Pointer
+		mov esp, StackPointer;
+	}
+
+	return returnValue;
 }
 
 DLL_METHOD int32_t DLL_CALL BP_CallFunction1(BP_BlitzFunction1_t lpFunctionPointer, int32_t p1) {
 #pragma comment(linker, "/EXPORT:BP_CallFunction1=_BP_CallFunction1@8")
-	return lpFunctionPointer(p1);
+	int32_t returnValue, StackPointer;
+
+	__asm { // Store Stack Pointer
+		mov StackPointer, esp;
+	}
+
+	returnValue = lpFunctionPointer(p1);
+
+	__asm { // Restore Stack Pointer
+		mov esp, StackPointer;
+	}
+
+	return returnValue;
 }
 
 DLL_METHOD int32_t DLL_CALL BP_CallFunction2(BP_BlitzFunction2_t lpFunctionPointer, int32_t p1, int32_t p2) {
 #pragma comment(linker, "/EXPORT:BP_CallFunction2=_BP_CallFunction2@12")
-	return lpFunctionPointer(p1, p2);
+	int32_t returnValue, StackPointer;
+
+	__asm { // Store Stack Pointer
+		mov StackPointer, esp;
+	}
+
+	returnValue = lpFunctionPointer(p1, p2);
+
+	__asm { // Restore Stack Pointer
+		mov esp, StackPointer;
+	}
+
+	return returnValue;
 }
 
 DLL_METHOD int32_t DLL_CALL BP_CallFunction3(BP_BlitzFunction3_t lpFunctionPointer, int32_t p1, int32_t p2, int32_t p3) {
 #pragma comment(linker, "/EXPORT:BP_CallFunction3=_BP_CallFunction3@16")
-	return lpFunctionPointer(p1, p2, p3);
+	int32_t returnValue, StackPointer;
+
+	__asm { // Store Stack Pointer
+		mov StackPointer, esp;
+	}
+
+	returnValue = lpFunctionPointer(p1, p2, p3);
+
+	__asm { // Restore Stack Pointer
+		mov esp, StackPointer;
+	}
+
+	return returnValue;
 }
 
 DLL_METHOD int32_t DLL_CALL BP_CallFunction4(BP_BlitzFunction4_t lpFunctionPointer, int32_t p1, int32_t p2, int32_t p3, int32_t p4) {
 #pragma comment(linker, "/EXPORT:BP_CallFunction4=_BP_CallFunction4@20")
-	return lpFunctionPointer(p1, p2, p3, p4);
+	int32_t returnValue, StackPointer;
+
+	__asm { // Store Stack Pointer
+		mov StackPointer, esp;
+	}
+
+	returnValue = lpFunctionPointer(p1, p2, p3, p4);
+
+	__asm { // Restore Stack Pointer
+		mov esp, StackPointer;
+	}
+
+	return returnValue;
 }
 
 DLL_METHOD int32_t DLL_CALL BP_CallFunction5(BP_BlitzFunction5_t lpFunctionPointer, int32_t p1, int32_t p2, int32_t p3, int32_t p4, int32_t p5) {
 #pragma comment(linker, "/EXPORT:BP_CallFunction5=_BP_CallFunction5@24")
-	return lpFunctionPointer(p1, p2, p3, p4, p5);
+	int32_t returnValue, StackPointer;
+
+	__asm { // Store Stack Pointer
+		mov StackPointer, esp;
+	}
+
+	returnValue = lpFunctionPointer(p1, p2, p3, p4, p5);
+
+	__asm { // Restore Stack Pointer
+		mov esp, StackPointer;
+	}
+
+	return returnValue;
 }
