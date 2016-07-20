@@ -9,6 +9,12 @@
       <UniqueIdentifier>{527b3491-2ee2-474d-863f-2d21b7abb958}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{d3963385-0917-43df-9813-3cd79d80d4d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Examples">
+      <UniqueIdentifier>{1af1f49c-694a-4143-b7a4-9a6805a2385c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -28,5 +34,46 @@
     <ClInclude Include="dllmain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlitzPointer.decls">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\LICENSE">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\LICENSE.lesser">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\Examples\Example04.bb">
+      <Filter>Resource Files\Examples</Filter>
+    </None>
+    <None Include="Resources\Examples\Example05.bb">
+      <Filter>Resource Files\Examples</Filter>
+    </None>
+    <None Include="Resources\Examples\Example06.bb">
+      <Filter>Resource Files\Examples</Filter>
+    </None>
+    <None Include="Resources\Examples\Example07.bb">
+      <Filter>Resource Files\Examples</Filter>
+    </None>
+    <None Include="Resources\Examples\Example08.bb">
+      <Filter>Resource Files\Examples</Filter>
+    </None>
+    <None Include="Resources\Examples\BlitzPointer.ipf">
+      <Filter>Resource Files\Examples</Filter>
+    </None>
+    <None Include="Resources\Examples\Example_Shared.bb">
+      <Filter>Resource Files\Examples</Filter>
+    </None>
+    <None Include="Resources\Examples\Example01.bb">
+      <Filter>Resource Files\Examples</Filter>
+    </None>
+    <None Include="Resources\Examples\Example02.bb">
+      <Filter>Resource Files\Examples</Filter>
+    </None>
+    <None Include="Resources\Examples\Example03.bb">
+      <Filter>Resource Files\Examples</Filter>
+    </None>
   </ItemGroup>
 </Project>

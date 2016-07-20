@@ -160,6 +160,21 @@
     <ClInclude Include="BlitzPointer.h" />
     <ClInclude Include="dllmain.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlitzPointer.decls" />
+    <None Include="Resources\Examples\BlitzPointer.ipf" />
+    <None Include="Resources\Examples\Example01.bb" />
+    <None Include="Resources\Examples\Example02.bb" />
+    <None Include="Resources\Examples\Example03.bb" />
+    <None Include="Resources\Examples\Example04.bb" />
+    <None Include="Resources\Examples\Example05.bb" />
+    <None Include="Resources\Examples\Example06.bb" />
+    <None Include="Resources\Examples\Example07.bb" />
+    <None Include="Resources\Examples\Example08.bb" />
+    <None Include="Resources\Examples\Example_Shared.bb" />
+    <None Include="Resources\LICENSE" />
+    <None Include="Resources\LICENSE.lesser" />
+  </ItemGroup>
   <Target Name="CopyResources" AfterTargets="Build">
     <ItemGroup>
       <Resources Include="$(ProjectDir)\Resources\**\*.*" />
